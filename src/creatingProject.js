@@ -9,7 +9,9 @@ const hideProjectForm = () => {
   document.querySelector('#projectForm').style.display = 'none';
 };
 
-const 
+const showProjectForm = () => {
+  document.querySelector('#projectForm').style.display = 'block';
+};
 
 hideProjectForm();
 
