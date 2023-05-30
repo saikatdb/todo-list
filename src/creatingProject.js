@@ -1,8 +1,8 @@
 //create project factory
-const projectFactory = (title) => {
+const projectFactory = (projectName) => {
   const taskList = [];
   const taskNum = taskList.length;
-  return { title, taskList, taskNum };
+  return { projectName, taskList, taskNum };
 };
 
 const hideProjectForm = () => {
@@ -18,14 +18,14 @@ const showProjectForm = () => {
   document.getElementById('projectInput').focus();
 };
 
-const createEvent = (() => {
+const createEvent = () => {
   const addProject = document.getElementById('addProject');
   addProject.addEventListener('click', showProjectForm);
 
   const cancel = document.querySelector('.projectCancelBtn');
   cancel.addEventListener('click', hideProjectForm);
-})();
+};
 
 hideProjectForm();
 
-export { projectFactory, hideProjectForm };
+export { projectFactory, createEvent };
