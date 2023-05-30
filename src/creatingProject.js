@@ -7,10 +7,15 @@ const projectFactory = (title) => {
 
 const hideProjectForm = () => {
   document.querySelector('#projectForm').style.display = 'none';
+  const projectInput = document.querySelector('#projectInput');
+
+  projectInput.value = '';
 };
 
 const showProjectForm = () => {
   document.querySelector('#projectForm').style.display = 'block';
+  //focus on input field
+  document.getElementById('projectInput').focus();
 };
 
 hideProjectForm();
