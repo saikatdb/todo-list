@@ -18,6 +18,14 @@ const showProjectForm = () => {
   document.getElementById('projectInput').focus();
 };
 
+const createEvent = (() => {
+  const addProject = document.getElementById('addProject');
+  addProject.addEventListener('click', showProjectForm);
+
+  const cancel = document.querySelector('.projectCancelBtn');
+  cancel.addEventListener('click', hideProjectForm);
+})();
+
 hideProjectForm();
 
 export { projectFactory, hideProjectForm };
