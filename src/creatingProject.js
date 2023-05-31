@@ -5,6 +5,17 @@ const projectFactory = (dataProject, projectName) => {
   return { dataProject, projectName, taskList, taskNum };
 };
 
+const createEvent = () => {
+  const addProject = document.getElementById('addProject');
+  addProject.addEventListener('click', showProjectForm);
+
+  const cancel = document.querySelector('.projectCancelBtn');
+  cancel.addEventListener('click', hideProjectForm);
+
+  const submit = document.querySelector('.projectSubmitBtn');
+  submit.addEventListener('click', addProjectInput);
+};
+
 const defaultProjectList = [];
 
 const hideProjectForm = () => {
@@ -20,26 +31,42 @@ const showProjectForm = () => {
   document.getElementById('projectInput').focus();
 };
 
-const addProjectInput = () => {
+const addProjectInput = (e) => {
+  e.preventDefault();
   const projectName = document.getElementById('projectInput').value;
   const dataProject = defaultProjectList.length;
 
   const newProject = projectFactory(dataProject, projectName);
   defaultProjectList.push(newProject);
-  console.log(newProject);
+  console.log(dataProject);
+
+  addProjectToDOM(dataProject, projectName);
+  hideProjectForm();
 };
 
-const createEvent = () => {
-  const addProject = document.getElementById('addProject');
-  addProject.addEventListener('click', showProjectForm);
+const addProjectToDOM = (dataProject, textInput) => {
+  const project = document.querySelector('.project');
+  const projectForm = document.getElementById('projectForm');
+  const projectList = document.querySelector('.projectList');
 
-  const cancel = document.querySelector('.projectCancelBtn');
-  cancel.addEventListener('click', hideProjectForm);
+  const projectButton = document.createElement('button');
+  projectButton.setAttribute('data-project-button', `${dataProject}`);
+  projectButton.classList.add('tile');
+  projectList.appendChild(projectButton);
 
-  const submit = document.querySelector('.projectSubmitBtn');
-  submit.addEventListener('click', addProjectInput);
+  //left panel of the project with project name
+  const leftProjectPanel = document.createElement('div');
+  leftProjectPanel.classList.add('left-project-panel');
+  projectButton.appendChild(leftProjectPanel);
+
+  const textSpan = document.createElement('span');
+  textSpan.textContent = textInput;
+  leftProjectPanel.appendChild(textSpan);
+
+  //right panel of the project
+  // const rightProjectPanel = doc
 };
 
 hideProjectForm();
 
-export { projectFactory, createEvent };
+export { projectFactory, createEvent, defaultProjectList };
