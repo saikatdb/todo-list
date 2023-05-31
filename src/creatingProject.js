@@ -54,23 +54,34 @@ const addProjectToDOM = (dataProject, textInput) => {
   projectButton.classList.add('tile');
   projectList.appendChild(projectButton);
 
-  //left panel of the project with project name
+  //left panel of the project
   const leftProjectPanel = document.createElement('div');
   leftProjectPanel.classList.add('left-project-panel');
   projectButton.appendChild(leftProjectPanel);
 
+  const listIcon = createIconRound('list');
+  leftProjectPanel.appendChild(listIcon);
+
+  //add project title
   const textSpan = document.createElement('span');
   textSpan.textContent = textInput;
   leftProjectPanel.appendChild(textSpan);
 
   //right panel of the project
-  // const rightProjectPanel = doc
+  const rightProjectPanel = document.createElement('div');
+  rightProjectPanel.classList.add('right-project-panel');
+  projectButton.appendChild(rightProjectPanel);
+
+  //'clear' icon
+  const clearIcon = createIconRound('clear');
+  rightProjectPanel.appendChild(clearIcon);
 };
 
 const createIconRound = (name) => {
-  let icon = document.createElement('span');
+  let icon = document.createElement('i');
   icon.classList.add('material-icons-round');
   icon.textContent = name;
+  return icon;
 };
 
 hideProjectForm();
