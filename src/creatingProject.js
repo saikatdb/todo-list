@@ -67,6 +67,12 @@ const addProjectToDOM = (dataProject, textInput) => {
   // const rightProjectPanel = doc
 };
 
+const createIconRound = (name) => {
+  let icon = document.createElement('span');
+  icon.classList.add('material-icons-round');
+  icon.textContent = name;
+};
+
 hideProjectForm();
 
 export { projectFactory, createEvent, defaultProjectList };
