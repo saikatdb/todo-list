@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet"
+    />
     <script src="main.js" defer></script>
     <title>Todo List</title>
   </head>
@@ -13,6 +17,7 @@
     </header>
     <div class="content">
       <div class="leftPanel">
+        <!-- home panel -->
         <div class="home">
           <h2>Home</h2>
           <div class="tile" id="allTasks">
@@ -28,8 +33,10 @@
             <div>important</div>
           </div>
         </div>
-        <div class="Project">
-          <h2>Project</h2>
+        <!-- User Projects -->
+        <div class="project">
+          <h1 class="projectTitled">Project</h1>
+          <div class="projectList"></div>
           <form id="projectForm" class="hidden" autocomplete="off">
             <div class="inputField">
               <input
