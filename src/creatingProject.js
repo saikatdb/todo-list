@@ -1,4 +1,5 @@
 import { selectTile } from './home';
+
 //create project factory
 const projectFactory = (dataProject, projectName) => {
   const taskList = [];
@@ -49,7 +50,7 @@ const addProjectToDOM = (dataProject, textInput) => {
   const projectList = document.querySelector('.projectList');
 
   const projectButton = document.createElement('button');
-  projectButton.setAttribute('data-project-button', `${dataProject}`);
+  projectButton.setAttribute('data-project-num', `${dataProject}`);
   projectButton.classList.add('tile');
   projectList.appendChild(projectButton);
 
@@ -63,6 +64,7 @@ const addProjectToDOM = (dataProject, textInput) => {
 
   //add project title
   const textSpan = document.createElement('span');
+  textSpan.classList.add('data-project-name');
   textSpan.textContent = textInput;
   leftProjectPanel.appendChild(textSpan);
 
