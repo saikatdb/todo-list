@@ -1,3 +1,4 @@
+import { selectTile } from './home';
 //create project factory
 const projectFactory = (dataProject, projectName) => {
   const taskList = [];
@@ -38,15 +39,13 @@ const addProjectInput = (e) => {
 
   const newProject = projectFactory(dataProject, projectName);
   defaultProjectList.push(newProject);
-  console.log(dataProject);
 
   addProjectToDOM(dataProject, projectName);
+  selectTile();
   hideProjectForm();
 };
 
 const addProjectToDOM = (dataProject, textInput) => {
-  const project = document.querySelector('.project');
-  const projectForm = document.getElementById('projectForm');
   const projectList = document.querySelector('.projectList');
 
   const projectButton = document.createElement('button');
