@@ -20,22 +20,22 @@
         <!-- home panel -->
         <div class="home">
           <h2>Home</h2>
-          <div class="tile" id="allTasks">
+          <button class="tile selected" id="allTasks">
             <div>All Tasks</div>
-          </div>
-          <div class="tile" id="today">
+          </button>
+          <button class="tile" id="today">
             <div>Today</div>
-          </div>
-          <div class="tile" id="thisWeek">
+          </button>
+          <button class="tile" id="thisWeek">
             <div>Next 7 Days</div>
-          </div>
-          <div class="tile" id="important">
+          </button>
+          <button class="tile" id="important">
             <div>important</div>
-          </div>
+          </button>
         </div>
         <!-- User Projects -->
         <div class="project">
-          <h1 class="projectTitled">Project</h1>
+          <h1 class="projectTitle">Project</h1>
           <div class="projectList"></div>
           <form id="projectForm" class="hidden" autocomplete="off">
             <div class="inputField">
@@ -57,7 +57,7 @@
       <div class="rightPanel">
         <div class="projectName">All Tasks</div>
         <div class="task-todo">
-          <ul></ul>
+          <div class="taskList"></div>
           <form id="taskForm" class="hidden" autocomplete="off">
             <div class="inputField">
               <input type="text" id="taskInput" placeholder="New Task" />
@@ -68,6 +68,7 @@
               </div>
             </div>
           </form>
+          <button id="addTask">Add Task</button>
         </div>
       </div>
     </div>
