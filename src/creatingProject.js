@@ -91,19 +91,20 @@ const addProjectToDOM = (dataProject, textInput) => {
   rightProjectPanel.appendChild(clearIcon);
 };
 
-// When the page loads, populate the projects from defaultProjectList in the DOM
-window.addEventListener('DOMContentLoaded', () => {
-  defaultProjectList.forEach((project) => {
-    addProjectToDOM(project.dataProject, project.projectName);
-  });
-});
-
 const createIconRound = (name) => {
   let icon = document.createElement('i');
   icon.classList.add('material-icons-round');
   icon.textContent = name;
   return icon;
 };
+
+const populateProjects = () => {
+  defaultProjectList.forEach((project) => {
+    addProjectToDOM(project.dataProject, project.projectName);
+  });
+};
+
+populateProjects();
 
 // hideProjectForm();
 
