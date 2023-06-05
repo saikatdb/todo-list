@@ -7,7 +7,7 @@ const projectFactory = (dataProject, projectName) => {
   return { dataProject, projectName, taskList, taskNum };
 };
 
-const createEvent = () => {
+const projectEvent = () => {
   const addProject = document.getElementById('addProject');
   addProject.addEventListener('click', showProjectForm);
 
@@ -18,7 +18,14 @@ const createEvent = () => {
   submit.addEventListener('click', addProjectInput);
 };
 
-const defaultProjectList = [];
+// Retrieve defaultProjectList from local storage
+const storedProjectList = localStorage.getItem('defaultProjectList');
+
+// If defaultProjectList exists in local storage, assign it to defaultProjectList variable
+// Otherwise, use an empty array as the default value
+const defaultProjectList = storedProjectList
+  ? JSON.parse(storedProjectList)
+  : [];
 
 const hideProjectForm = () => {
   document.querySelector('#projectForm').style.display = 'none';
@@ -44,6 +51,12 @@ const addProjectInput = (e) => {
   addProjectToDOM(dataProject, projectName);
   selectTile();
   hideProjectForm();
+
+  // Store defaultProjectList in local storage
+  localStorage.setItem(
+    'defaultProjectList',
+    JSON.stringify(defaultProjectList)
+  );
 };
 
 const addProjectToDOM = (dataProject, textInput) => {
@@ -78,6 +91,13 @@ const addProjectToDOM = (dataProject, textInput) => {
   rightProjectPanel.appendChild(clearIcon);
 };
 
+// When the page loads, populate the projects from defaultProjectList in the DOM
+window.addEventListener('DOMContentLoaded', () => {
+  defaultProjectList.forEach((project) => {
+    addProjectToDOM(project.dataProject, project.projectName);
+  });
+});
+
 const createIconRound = (name) => {
   let icon = document.createElement('i');
   icon.classList.add('material-icons-round');
@@ -85,6 +105,6 @@ const createIconRound = (name) => {
   return icon;
 };
 
-hideProjectForm();
+// hideProjectForm();
 
-export { projectFactory, createEvent, defaultProjectList };
+export { projectFactory, projectEvent, defaultProjectList, hideProjectForm };
