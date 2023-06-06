@@ -13,6 +13,9 @@ const taskEvent = () => {
 
   const cancel = document.querySelector('.taskCancelBtn');
   cancel.addEventListener('click', hideTaskForm);
+
+  const submit = document.querySelector('.taskSubmitBtn');
+  submit.addEventListener('click', taskInput);
 };
 
 const hideTaskForm = () => {
@@ -39,6 +42,23 @@ const findCurrentDataProject = () => {
 
 const selectCurrentProject = (currentDataProject) => {
   return defaultProjectList[currentDataProject];
+};
+
+const taskInput = (e) => {
+  e.preventDefault();
+  let title = document.getElementById('taskInput').value;
+  let dateInput = document.getElementById('taskDate').value;
+
+  let currentDataProject = findCurrentDataProject();
+  let currentProject = selectCurrentProject(currentDataProject);
+
+  let dataTask = currentProject.taskList.length;
+
+  const newTask = taskFactory(dataTask, title, dateInput, false, false);
+
+  defaultProjectList[currentDataProject].taskList.push(newTask);
+
+  hideTaskForm();
 };
 
 export { hideTaskForm, taskEvent };
