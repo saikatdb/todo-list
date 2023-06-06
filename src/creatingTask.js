@@ -1,16 +1,10 @@
 import { format } from 'date-fns';
+import { defaultProjectList } from './creatingProject';
 
 //create the task
-export const taskFactory = (
-  dataProject,
-  id,
-  title,
-  date,
-  complete,
-  important
-) => {
+export const taskFactory = (dataTask, title, date, complete, important) => {
   const dueDate = format(new Date(date), 'MM/dd/yyyy');
-  return { dataProject, id, title, dueDate, complete, important };
+  return { dataTask, title, dueDate, complete, important };
 };
 
 const taskEvent = () => {
@@ -36,6 +30,15 @@ const showTaskForm = () => {
   taskForm.style.display = 'block';
   const taskInput = document.querySelector('#taskInput');
   taskInput.focus();
+};
+
+const findCurrentDataProject = () => {
+  const selected = document.querySelector('.selected');
+  return selected.dataset.projectNum;
+};
+
+const selectCurrentProject = (currentDataProject) => {
+  return defaultProjectList[currentDataProject];
 };
 
 export { hideTaskForm, taskEvent };
