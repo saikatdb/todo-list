@@ -2,9 +2,9 @@ import { selectTile } from './home';
 
 //create project factory
 const projectFactory = (dataProject, projectName) => {
-  const taskList = [];
-  const taskNum = taskList.length;
-  return { dataProject, projectName, taskList, taskNum };
+  const taskListArray = [];
+  const taskNum = taskListArray.length;
+  return { dataProject, projectName, taskListArray, taskNum };
 };
 
 const projectEvent = () => {
@@ -98,6 +98,7 @@ const createIconRound = (name) => {
   return icon;
 };
 
+//function to show saved project in DOM after reloading page
 const populateProjects = () => {
   defaultProjectList.forEach((project) => {
     addProjectToDOM(project.dataProject, project.projectName);
@@ -108,4 +109,10 @@ populateProjects();
 
 // hideProjectForm();
 
-export { projectFactory, projectEvent, defaultProjectList, hideProjectForm };
+export {
+  projectFactory,
+  projectEvent,
+  defaultProjectList,
+  hideProjectForm,
+  createIconRound,
+};

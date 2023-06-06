@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { defaultProjectList } from './creatingProject';
+import { defaultProjectList, createIconRound } from './creatingProject';
 
 //create the task
 export const taskFactory = (dataTask, title, date, complete, important) => {
@@ -44,6 +44,7 @@ const selectCurrentProject = (currentDataProject) => {
   return defaultProjectList[currentDataProject];
 };
 
+//process data from add task
 const taskInput = (e) => {
   e.preventDefault();
   let title = document.getElementById('taskInput').value;
@@ -52,13 +53,18 @@ const taskInput = (e) => {
   let currentDataProject = findCurrentDataProject();
   let currentProject = selectCurrentProject(currentDataProject);
 
-  let dataTask = currentProject.taskList.length;
+  let dataTask = currentProject.taskListArray.length;
 
   const newTask = taskFactory(dataTask, title, dateInput, false, false);
 
-  defaultProjectList[currentDataProject].taskList.push(newTask);
+  defaultProjectList[currentDataProject].taskListArray.push(newTask);
 
   hideTaskForm();
 };
+
+//add task to DOM
+// function addTaskToDOM(dataTask, title, date, completed, important) {
+//   const taskList
+// }
 
 export { hideTaskForm, taskEvent };
