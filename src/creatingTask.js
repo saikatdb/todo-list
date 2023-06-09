@@ -53,11 +53,15 @@ const taskInput = (e) => {
   let currentDataProject = findCurrentDataProject();
   let currentProject = selectCurrentProject(currentDataProject);
 
-  let dataTask = currentProject.taskListArray.length;
+  console.log(currentProject.taskList.length);
+
+  let dataTask = currentProject.taskList.length;
 
   const newTask = taskFactory(dataTask, title, dateInput, false, false);
 
-  defaultProjectList[currentDataProject].taskListArray.push(newTask);
+  defaultProjectList[currentDataProject].taskList.push(newTask);
+
+  // addTaskToDOM(dataTask, title, dateInput);
 
   hideTaskForm();
 };

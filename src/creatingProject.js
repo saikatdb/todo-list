@@ -2,9 +2,9 @@ import { selectTile } from './home';
 
 //create project factory
 const projectFactory = (dataProject, projectName) => {
-  const taskListArray = [];
-  const taskNum = taskListArray.length;
-  return { dataProject, projectName, taskListArray, taskNum };
+  const taskList = [];
+  const taskNum = taskList.length;
+  return { dataProject, projectName, taskList, taskNum };
 };
 
 const projectEvent = () => {
