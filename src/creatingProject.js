@@ -110,7 +110,6 @@ const populateProjects = () => {
 
 populateProjects();
 
-// hideProjectForm();
 
 export {
   projectFactory,
@@ -118,4 +117,5 @@ export {
   defaultProjectList,
   hideProjectForm,
   createIconRound,
+  saveToLocalStorage,
 };

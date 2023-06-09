@@ -1,5 +1,9 @@
 import { format } from 'date-fns';
-import { defaultProjectList, createIconRound } from './creatingProject';
+import {
+  defaultProjectList,
+  createIconRound,
+  saveToLocalStorage,
+} from './creatingProject';
 
 //create the task
 export const taskFactory = (dataTask, title, date, completed, important) => {
@@ -58,9 +62,11 @@ const taskInput = (e) => {
 
   const newTask = taskFactory(dataTask, title, date, false, false);
 
-  defaultProjectList[currentDataProject].taskList.push(newTask);
+  currentProject.taskList.push(newTask);
 
   addTaskToDOM(dataTask, title, date);
+
+  saveToLocalStorage();
 
   hideTaskForm();
 };
