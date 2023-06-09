@@ -52,7 +52,10 @@ const addProjectInput = (e) => {
   selectTile();
   hideProjectForm();
 
-  // Store defaultProjectList in local storage
+  saveToLocalStorage();
+};
+
+const saveToLocalStorage = () => {
   localStorage.setItem(
     'defaultProjectList',
     JSON.stringify(defaultProjectList)
