@@ -2,9 +2,9 @@ import { format } from 'date-fns';
 import { defaultProjectList, createIconRound } from './creatingProject';
 
 //create the task
-export const taskFactory = (dataTask, title, date, complete, important) => {
+export const taskFactory = (dataTask, title, date, completed, important) => {
   const dueDate = format(new Date(date), 'MM/dd/yyyy');
-  return { dataTask, title, dueDate, complete, important };
+  return { dataTask, title, dueDate, completed, important };
 };
 
 const taskEvent = () => {
@@ -63,8 +63,57 @@ const taskInput = (e) => {
 };
 
 //add task to DOM
-// function addTaskToDOM(dataTask, title, date, completed, important) {
-//   const taskList
-// }
+function addTaskToDOM(dataTask, title, date, completed, important) {
+  const taskList = document.querySelector('.taskList');
+  const task = document.createElement('li');
+
+  task.setAttribute('data-task-num', `${dataTask}`);
+  taskList.appendChild(task);
+
+  const leftTaskPanel = document.createElement('div');
+  leftTaskPanel.classList.add('left-task-panel');
+  task.appendChild(leftTaskPanel);
+
+  const rightTaskPanel = document.createElement('div');
+  rightTaskPanel.classList.add('right-task-panel');
+  task.appendChild(rightTaskPanel);
+
+  const unchecked = createIconRound('radio_button_unchecked');
+  unchecked.classList.add('unchecked');
+  leftTaskPanel.appendChild(unchecked);
+
+  const checked = createIconRound('radio_button_checked');
+  checked.classList.add('checked');
+
+  const taskContent = document.createElement('p');
+  taskContent.classList.add('task-content');
+  taskContent.textContent = title;
+  leftTaskPanel.appendChild(taskContent);
+
+  if (completed) {
+    leftTaskPanel.replaceChild(checked, unchecked);
+    taskContent.classList.add('lie-through', 'fade');
+  }
+
+  const dueDate = document.createElement('p');
+  dueDate.classList.add('due-date');
+  dueDate.textContent = date;
+  rightTaskPanel.appendChild(dueDate);
+
+  const starBorder = createIconRound('star_border');
+  starBorder.classList.add('star-border');
+  rightTaskPanel.appendChild(starBorder);
+
+  const star = createIconRound('star');
+  star.classList.add('important');
+
+  if (important) {
+    rightTaskPanel.replaceChild(star, starBorder);
+  }
+
+  const clear = createIconRound('clear');
+  clear.classList.add('clear');
+  rightTaskPanel.appendChild(clear);
+}
 
 export { hideTaskForm, taskEvent };
