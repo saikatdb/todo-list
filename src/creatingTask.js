@@ -3,8 +3,7 @@ import { defaultProjectList, createIconRound } from './creatingProject';
 
 //create the task
 export const taskFactory = (dataTask, title, date, completed, important) => {
-  const dueDate = format(new Date(date), 'MM/dd/yyyy');
-  return { dataTask, title, dueDate, completed, important };
+  return { dataTask, title, date, completed, important };
 };
 
 const taskEvent = () => {
@@ -53,15 +52,15 @@ const taskInput = (e) => {
   let currentDataProject = findCurrentDataProject();
   let currentProject = selectCurrentProject(currentDataProject);
 
-  console.log(currentProject.taskList.length);
+  let date = processDateInput(dateInput);
 
   let dataTask = currentProject.taskList.length;
 
-  const newTask = taskFactory(dataTask, title, dateInput, false, false);
+  const newTask = taskFactory(dataTask, title, date, false, false);
 
   defaultProjectList[currentDataProject].taskList.push(newTask);
 
-  // addTaskToDOM(dataTask, title, dateInput);
+  addTaskToDOM(dataTask, title, date);
 
   hideTaskForm();
 };
@@ -118,6 +117,17 @@ function addTaskToDOM(dataTask, title, date, completed, important) {
   const clear = createIconRound('clear');
   clear.classList.add('clear');
   rightTaskPanel.appendChild(clear);
+}
+
+function processDateInput(dateInput) {
+  let formattedDate;
+  if (!dateInput) {
+    formattedDate = 'No Due Date';
+  } else {
+    const dueDate = format(new Date(dateInput), 'MM/dd/yyyy');
+    formattedDate = dueDate;
+  }
+  return formattedDate;
 }
 
 export { hideTaskForm, taskEvent };
