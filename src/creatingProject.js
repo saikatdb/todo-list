@@ -17,8 +17,8 @@ const projectEvent = () => {
   const submit = document.querySelector('.projectSubmitBtn');
   submit.addEventListener('click', addProjectInput);
 
-  const leftPanel = document.querySelector('.leftPanel');
-  leftPanel.addEventListener('click', checkSelectedTile);
+  // const leftPanel = document.querySelector('.leftPanel');
+  // leftPanel.addEventListener('click', checkSelectedTile);
 };
 
 // Retrieve defaultProjectList from local storage
@@ -88,7 +88,7 @@ const addProjectToDOM = (dataProject, textInput) => {
 
   //add project title
   const textSpan = document.createElement('span');
-  textSpan.classList.add('custom-project-name');
+  textSpan.classList.add('project-name');
   textSpan.textContent = textInput;
   leftProjectPanel.appendChild(textSpan);
 
