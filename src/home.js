@@ -5,9 +5,41 @@ const selectTile = () => {
       const selected = document.querySelector('.selected');
       selected.classList.remove('selected');
       tile.classList.add('selected');
-      console.log('hey');
     });
   });
 };
 
-export { selectTile };
+function checkSelectedTile() {
+  const defaultProject = document.querySelectorAll('.default-project');
+  const customProject = document.querySelectorAll('.custom-project');
+
+  defaultProject.forEach((project) => {
+    if (project.classList.contains('selected')) {
+      hideAddTask();
+      console.log('hello');
+    }
+  });
+
+  customProject.forEach((project) => {
+    if (project.classList.contains('selected')) {
+      showAddTask();
+      console.log('yo');
+    }
+  });
+}
+
+//hide add task button
+function hideAddTask() {
+  const addTask = document.querySelector('#addTask');
+  addTask.style.display = 'none';
+}
+
+//show add task button
+function showAddTask() {
+  const addTask = document.querySelector('#addTask');
+  addTask.style.display = 'block';
+}
+
+checkSelectedTile();
+
+export { selectTile, checkSelectedTile };

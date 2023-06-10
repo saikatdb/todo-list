@@ -1,4 +1,4 @@
-import { selectTile } from './home';
+import { selectTile, checkSelectedTile } from './home';
 
 //create project factory
 const projectFactory = (dataProject, projectName) => {
@@ -16,6 +16,9 @@ const projectEvent = () => {
 
   const submit = document.querySelector('.projectSubmitBtn');
   submit.addEventListener('click', addProjectInput);
+
+  const leftPanel = document.querySelector('.leftPanel');
+  leftPanel.addEventListener('click', checkSelectedTile);
 };
 
 // Retrieve defaultProjectList from local storage
