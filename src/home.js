@@ -1,3 +1,8 @@
+const homeEvent = () => {
+  const leftPanel = document.querySelector('.leftPanel');
+  leftPanel.addEventListener('click', checkSelectedTile);
+};
+
 const selectTile = () => {
   const tiles = document.querySelectorAll('.tile');
   tiles.forEach((tile) => {
@@ -9,6 +14,7 @@ const selectTile = () => {
   });
 };
 
+//check which project tile is selected
 function checkSelectedTile() {
   const defaultProject = document.querySelectorAll('.default-project');
   const customProject = document.querySelectorAll('.custom-project');
@@ -16,14 +22,14 @@ function checkSelectedTile() {
   defaultProject.forEach((project) => {
     if (project.classList.contains('selected')) {
       hideAddTask();
-      console.log('hello');
+      updateDefaultTitle();
     }
   });
 
   customProject.forEach((project) => {
     if (project.classList.contains('selected')) {
       showAddTask();
-      console.log('yo');
+      updateCustomTitle();
     }
   });
 }
@@ -40,6 +46,23 @@ function showAddTask() {
   addTask.style.display = 'block';
 }
 
+//change title if any default project is selected
+function updateDefaultTitle() {
+  const currentProject = document.querySelector('.current-project');
+  const selectedProject = document.querySelector('.selected');
+  currentProject.textContent = selectedProject.textContent;
+}
+
+function updateCustomTitle() {
+  const currentProject = document.querySelector('.current-project');
+  const selectedProject = document.querySelector('.selected');
+  const projectName =
+    selectedProject.querySelector('.project-name').textContent;
+
+  currentProject.textContent = projectName;
+}
+
 checkSelectedTile();
+homeEvent();
 
 export { selectTile, checkSelectedTile };
