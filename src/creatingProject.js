@@ -40,6 +40,7 @@ const showProjectForm = () => {
   document.getElementById('projectInput').focus();
 };
 
+//process data from add project
 const addProjectInput = (e) => {
   e.preventDefault();
   const projectName = document.getElementById('projectInput').value;
@@ -55,6 +56,7 @@ const addProjectInput = (e) => {
   saveToLocalStorage();
 };
 
+//save defaultProjectList to local storage
 const saveToLocalStorage = () => {
   localStorage.setItem(
     'defaultProjectList',
@@ -62,12 +64,13 @@ const saveToLocalStorage = () => {
   );
 };
 
+//create and add project to DOM
 const addProjectToDOM = (dataProject, textInput) => {
   const projectList = document.querySelector('.projectList');
 
   const projectButton = document.createElement('button');
   projectButton.setAttribute('data-project-num', `${dataProject}`);
-  projectButton.classList.add('tile');
+  projectButton.classList.add('tile', 'custom-project');
   projectList.appendChild(projectButton);
 
   //left panel of the project
@@ -75,7 +78,9 @@ const addProjectToDOM = (dataProject, textInput) => {
   leftProjectPanel.classList.add('left-project-panel');
   projectButton.appendChild(leftProjectPanel);
 
+  //list icon
   const listIcon = createIconRound('list');
+  listIcon.classList.add('list');
   leftProjectPanel.appendChild(listIcon);
 
   //add project title
@@ -91,9 +96,11 @@ const addProjectToDOM = (dataProject, textInput) => {
 
   //'clear' icon
   const clearIcon = createIconRound('clear');
+  clearIcon.classList.add('delete');
   rightProjectPanel.appendChild(clearIcon);
 };
 
+//create google round icon
 const createIconRound = (name) => {
   let icon = document.createElement('i');
   icon.classList.add('material-icons-round');
@@ -101,7 +108,7 @@ const createIconRound = (name) => {
   return icon;
 };
 
-//function to show saved project in DOM after reloading page
+//display all projects in DOM
 const populateProjects = () => {
   defaultProjectList.forEach((project) => {
     addProjectToDOM(project.dataProject, project.projectName);
@@ -109,7 +116,6 @@ const populateProjects = () => {
 };
 
 populateProjects();
-
 
 export {
   projectFactory,
