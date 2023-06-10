@@ -1,7 +1,21 @@
-import { taskFactory } from './creatingTask';
-import { createEvent } from './creatingProject';
+import {
+  projectEvent,
+  defaultProjectList,
+  hideProjectForm,
+} from './creatingProject';
+
+import { taskEvent, hideTaskForm } from './creatingTask';
+
+import { selectTile, checkSelectedTile, homeEvent } from './home';
 import './style.css';
 
-let task1 = taskFactory('finished project', '2023, 10, 5', 'no', 'important');
-console.log(task1);
-createEvent();
+projectEvent();
+taskEvent();
+console.log(defaultProjectList);
+
+selectTile();
+checkSelectedTile();
+homeEvent();
+
+hideProjectForm();
+hideTaskForm();

@@ -26,6 +26,7 @@ function checkSelectedTile() {
     if (project.classList.contains('selected')) {
       hideAddTask();
       updateDefaultTitle();
+      displayAllTasks();
     }
   });
 
@@ -59,6 +60,7 @@ function updateDefaultTitle() {
   currentProject.textContent = selectedProject.textContent;
 }
 
+//change title if any custom project is selected
 function updateCustomTitle() {
   const currentProject = document.querySelector('.current-project');
   const selectedProject = document.querySelector('.selected');
@@ -68,10 +70,14 @@ function updateCustomTitle() {
   currentProject.textContent = projectName;
 }
 
-//display all tasks in a project
-function displayProjectTasks(projectData) {
+function clearContent() {
   const taskList = document.querySelector('.taskList');
   taskList.textContent = '';
+}
+
+//display all tasks in a project
+function displayProjectTasks(projectData) {
+  clearContent();
 
   defaultProjectList[projectData].taskList.forEach((task) => {
     addTaskToDOM(
@@ -84,7 +90,21 @@ function displayProjectTasks(projectData) {
   });
 }
 
-checkSelectedTile();
-homeEvent();
+//display all tasks in dom
+function displayAllTasks() {
+  const taskList = document.querySelector('.taskList');
+  taskList.textContent = '';
+  defaultProjectList.forEach((project) => {
+    project.taskList.forEach((task) => {
+      addTaskToDOM(
+        task.dataTask,
+        task.title,
+        task.date,
+        task.completed,
+        task.important
+      );
+    });
+  });
+}
 
-export { selectTile, checkSelectedTile };
+export { selectTile, checkSelectedTile, homeEvent };
