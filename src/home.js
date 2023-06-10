@@ -1,3 +1,6 @@
+import { defaultProjectList } from './creatingProject';
+import { addTaskToDOM } from './creatingTask';
+
 const homeEvent = () => {
   const leftPanel = document.querySelector('.leftPanel');
   leftPanel.addEventListener('click', checkSelectedTile);
@@ -28,8 +31,11 @@ function checkSelectedTile() {
 
   customProject.forEach((project) => {
     if (project.classList.contains('selected')) {
+      const projectData = project.dataset.projectNum;
+
       showAddTask();
       updateCustomTitle();
+      displayProjectTasks(projectData);
     }
   });
 }
@@ -60,6 +66,22 @@ function updateCustomTitle() {
     selectedProject.querySelector('.project-name').textContent;
 
   currentProject.textContent = projectName;
+}
+
+//display all tasks in a project
+function displayProjectTasks(projectData) {
+  const taskList = document.querySelector('.taskList');
+  taskList.textContent = '';
+
+  defaultProjectList[projectData].taskList.forEach((task) => {
+    addTaskToDOM(
+      task.dataTask,
+      task.title,
+      task.date,
+      task.completed,
+      task.important
+    );
+  });
 }
 
 checkSelectedTile();
