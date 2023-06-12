@@ -136,4 +136,4 @@ function processDateInput(dateInput) {
   return formattedDate;
 }
 
-export { hideTaskForm, taskEvent };
+export { hideTaskForm, taskEvent, addTaskToDOM };
