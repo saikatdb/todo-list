@@ -34,6 +34,10 @@ function checkSelectedTile() {
       if (selected.matches('#allTasks')) {
         displayAllTasks();
       }
+
+      if (selected.matches('#important')) {
+        displayImportant();
+      }
     }
   });
 
@@ -117,7 +121,25 @@ function displayAllTasks() {
 }
 
 //display important task
-function displayImportant() {}
+function displayImportant() {
+  clearTaskFromDOM();
+  defaultProjectList.forEach((project) => {
+    project.taskList.forEach((task) => {
+      if (task.important) {
+        addTaskToDOM(
+          task.dataProject,
+          task.dataTask,
+          task.title,
+          task.date,
+          task.completed,
+          task.important
+        );
+      } else {
+        return;
+      }
+    });
+  });
+}
 
 export {
   selectTile,
