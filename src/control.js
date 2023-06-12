@@ -3,7 +3,7 @@ import {
   populateProjects,
   saveToLocalStorage,
 } from './creatingProject';
-import { displayAllTasks } from './home';
+import { displayAllTasks, checkSelectedTile } from './home';
 
 const deleteProject = () => {
   //Event delegation to handle the delete event on the project list container
@@ -23,7 +23,7 @@ const deleteProject = () => {
       //if deleted project was selected add selected class to allTasks
       const allTasks = document.getElementById('allTasks');
       allTasks.classList.add('selected');
-      displayAllTasks();
+      checkSelectedTile();
     }
   });
 };
