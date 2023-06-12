@@ -21,7 +21,7 @@ const selectTile = () => {
 function checkSelectedTile() {
   const defaultProject = document.querySelectorAll('.default-project');
   const customProject = document.querySelectorAll('.custom-project');
-
+  selectTile();
   defaultProject.forEach((project) => {
     if (project.classList.contains('selected')) {
       hideAddTask();
@@ -92,8 +92,7 @@ function displayProjectTasks(projectData) {
 
 //display all tasks in dom
 function displayAllTasks() {
-  const taskList = document.querySelector('.taskList');
-  taskList.textContent = '';
+  clearContent();
   defaultProjectList.forEach((project) => {
     project.taskList.forEach((task) => {
       addTaskToDOM(
@@ -107,4 +106,4 @@ function displayAllTasks() {
   });
 }
 
-export { selectTile, checkSelectedTile, homeEvent };
+export { selectTile, checkSelectedTile, homeEvent, displayAllTasks };
