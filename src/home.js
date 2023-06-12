@@ -24,6 +24,7 @@ function checkSelectedTile() {
   const customProject = document.querySelectorAll('.custom-project');
   selectTile();
 
+  //check if any default project is selected
   defaultProject.forEach((project) => {
     if (project.classList.contains('selected')) {
       hideAddTask();
@@ -34,13 +35,16 @@ function checkSelectedTile() {
       if (selected.matches('#allTasks')) {
         displayAllTasks();
       }
-
       if (selected.matches('#important')) {
         displayImportant();
+      }
+      if (selected.matches('#completed')) {
+        displayCompleted();
       }
     }
   });
 
+  //check if any custom project is selected
   customProject.forEach((project) => {
     if (project.classList.contains('selected')) {
       const projectData = project.dataset.projectNum;
@@ -126,6 +130,27 @@ function displayImportant() {
   defaultProjectList.forEach((project) => {
     project.taskList.forEach((task) => {
       if (task.important) {
+        addTaskToDOM(
+          task.dataProject,
+          task.dataTask,
+          task.title,
+          task.date,
+          task.completed,
+          task.important
+        );
+      } else {
+        return;
+      }
+    });
+  });
+}
+
+//display important task
+function displayCompleted() {
+  clearTaskFromDOM();
+  defaultProjectList.forEach((project) => {
+    project.taskList.forEach((task) => {
+      if (task.completed) {
         addTaskToDOM(
           task.dataProject,
           task.dataTask,
