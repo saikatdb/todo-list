@@ -70,25 +70,40 @@ function sortTaskData(projectData) {
   }
 }
 
-//check list for completed task
-function checkTask() {
+//all task event except for delete
+function taskControlEvent() {
   const taskList = document.querySelector('.taskList');
   taskList.addEventListener('click', (event) => {
     const task = event.target.closest('.task');
     const taskData = task.dataset.taskNum;
     const projectData = task.dataset.projectNum;
 
+    //to check unchecked task
     if (event.target.classList.contains('unchecked')) {
       defaultProjectList[projectData].taskList[taskData].completed = true;
       displayProjectTasks(projectData);
     }
 
+    //to uncheck checked task
     if (event.target.classList.contains('checked')) {
       defaultProjectList[projectData].taskList[taskData].completed = false;
       displayProjectTasks(projectData);
     }
+
+    //to make task important
+    if (event.target.classList.contains('star-border')) {
+      defaultProjectList[projectData].taskList[taskData].important = true;
+      displayProjectTasks(projectData);
+    }
+
+    // to make task unimportant
+    if (event.target.classList.contains('important')) {
+      defaultProjectList[projectData].taskList[taskData].important = false;
+      displayProjectTasks(projectData);
+    }
+
     saveToLocalStorage();
   });
 }
 
-export { deleteProject, deleteTask, checkTask };
+export { deleteProject, deleteTask, taskControlEvent };

@@ -8,7 +8,7 @@ import {
 import { taskEvent, hideTaskForm, removeAllProject } from './creatingTask';
 
 import { selectTile, checkSelectedTile, homeEvent } from './home';
-import { deleteProject, deleteTask } from './control';
+import { deleteProject, deleteTask, taskControlEvent } from './control';
 import './style.css';
 
 projectEvent();
@@ -22,6 +22,7 @@ homeEvent();
 deleteProject();
 // removeAllTask();
 deleteTask();
+taskControlEvent();
 
 hideProjectForm();
 hideTaskForm();
