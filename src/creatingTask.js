@@ -100,6 +100,7 @@ function addTaskToDOM(
   //set task data number
   task.setAttribute('data-task-num', `${dataTask}`);
   task.setAttribute('data-project-num', `${dataProject}`);
+  task.classList.add('task');
   taskList.appendChild(task);
 
   const leftTaskPanel = document.createElement('div');
