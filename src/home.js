@@ -77,14 +77,15 @@ function updateCustomTitle() {
   currentProject.textContent = projectName;
 }
 
-function clearContent() {
+//clear all tasks from DOM
+function clearTaskFromDOM() {
   const taskList = document.querySelector('.taskList');
   taskList.textContent = '';
 }
 
 //display all tasks in a project
 function displayProjectTasks(projectData) {
-  clearContent();
+  clearTaskFromDOM();
 
   defaultProjectList[projectData].taskList.forEach((task) => {
     addTaskToDOM(
@@ -100,7 +101,7 @@ function displayProjectTasks(projectData) {
 
 //display all tasks in dom
 function displayAllTasks() {
-  clearContent();
+  clearTaskFromDOM();
   defaultProjectList.forEach((project) => {
     project.taskList.forEach((task) => {
       addTaskToDOM(
@@ -114,6 +115,9 @@ function displayAllTasks() {
     });
   });
 }
+
+//display important task
+function displayImportant() {}
 
 export {
   selectTile,
