@@ -6,6 +6,7 @@ const homeEvent = () => {
   leftPanel.addEventListener('click', checkSelectedTile);
 };
 
+//add 'selected' class to the clicked project
 const selectTile = () => {
   const tiles = document.querySelectorAll('.tile');
   tiles.forEach((tile) => {
@@ -22,11 +23,17 @@ function checkSelectedTile() {
   const defaultProject = document.querySelectorAll('.default-project');
   const customProject = document.querySelectorAll('.custom-project');
   selectTile();
+
   defaultProject.forEach((project) => {
     if (project.classList.contains('selected')) {
       hideAddTask();
       updateDefaultTitle();
-      displayAllTasks();
+      const selected = document.querySelector('.selected');
+
+      //check to see which default project is selected
+      if (selected.matches('#allTasks')) {
+        displayAllTasks();
+      }
     }
   });
 
@@ -81,6 +88,7 @@ function displayProjectTasks(projectData) {
 
   defaultProjectList[projectData].taskList.forEach((task) => {
     addTaskToDOM(
+      task.dataProject,
       task.dataTask,
       task.title,
       task.date,
@@ -96,6 +104,7 @@ function displayAllTasks() {
   defaultProjectList.forEach((project) => {
     project.taskList.forEach((task) => {
       addTaskToDOM(
+        task.dataProject,
         task.dataTask,
         task.title,
         task.date,
@@ -106,4 +115,10 @@ function displayAllTasks() {
   });
 }
 
-export { selectTile, checkSelectedTile, homeEvent, displayAllTasks };
+export {
+  selectTile,
+  checkSelectedTile,
+  homeEvent,
+  displayAllTasks,
+  displayProjectTasks,
+};
