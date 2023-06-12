@@ -6,8 +6,15 @@ import {
 } from './creatingProject';
 
 //create the task
-export const taskFactory = (dataTask, title, date, completed, important) => {
-  return { dataTask, title, date, completed, important };
+export const taskFactory = (
+  dataProject,
+  dataTask,
+  title,
+  date,
+  completed,
+  important
+) => {
+  return { dataProject, dataTask, title, date, completed, important };
 };
 
 const taskEvent = () => {
@@ -60,11 +67,18 @@ const taskInput = (e) => {
 
   let dataTask = currentProject.taskList.length;
 
-  const newTask = taskFactory(dataTask, title, date, false, false);
+  const newTask = taskFactory(
+    currentDataProject,
+    dataTask,
+    title,
+    date,
+    false,
+    false
+  );
 
   currentProject.taskList.push(newTask);
 
-  addTaskToDOM(dataTask, title, date);
+  addTaskToDOM(currentDataProject, dataTask, title, date);
 
   saveToLocalStorage();
 
@@ -72,11 +86,20 @@ const taskInput = (e) => {
 };
 
 //add task to DOM
-function addTaskToDOM(dataTask, title, date, completed, important) {
+function addTaskToDOM(
+  dataProject,
+  dataTask,
+  title,
+  date,
+  completed,
+  important
+) {
   const taskList = document.querySelector('.taskList');
   const task = document.createElement('li');
 
+  //set task data number
   task.setAttribute('data-task-num', `${dataTask}`);
+  task.setAttribute('data-project-num', `${dataProject}`);
   taskList.appendChild(task);
 
   const leftTaskPanel = document.createElement('div');
@@ -87,13 +110,16 @@ function addTaskToDOM(dataTask, title, date, completed, important) {
   rightTaskPanel.classList.add('right-task-panel');
   task.appendChild(rightTaskPanel);
 
+  //unchecked icon
   const unchecked = createIconRound('radio_button_unchecked');
   unchecked.classList.add('unchecked');
   leftTaskPanel.appendChild(unchecked);
 
+  //checked icon
   const checked = createIconRound('radio_button_checked');
   checked.classList.add('checked');
 
+  //task title
   const taskContent = document.createElement('p');
   taskContent.classList.add('task-content');
   taskContent.textContent = title;
@@ -109,10 +135,12 @@ function addTaskToDOM(dataTask, title, date, completed, important) {
   dueDate.textContent = date;
   rightTaskPanel.appendChild(dueDate);
 
+  //non important icon
   const starBorder = createIconRound('star_border');
   starBorder.classList.add('star-border');
   rightTaskPanel.appendChild(starBorder);
 
+  //important icon
   const star = createIconRound('star');
   star.classList.add('important');
 
@@ -120,6 +148,7 @@ function addTaskToDOM(dataTask, title, date, completed, important) {
     rightTaskPanel.replaceChild(star, starBorder);
   }
 
+  //clear icon
   const clear = createIconRound('clear');
   clear.classList.add('clear');
   rightTaskPanel.appendChild(clear);
@@ -136,4 +165,11 @@ function processDateInput(dateInput) {
   return formattedDate;
 }
 
-export { hideTaskForm, taskEvent, addTaskToDOM };
+const removeAllProject = () => {
+  localStorage.clear();
+  saveToLocalStorage();
+};
+
+// removeAllTask();
+
+export { hideTaskForm, taskEvent, addTaskToDOM, removeAllProject };
