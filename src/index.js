@@ -5,10 +5,10 @@ import {
   populateProjects,
 } from './creatingProject';
 
-import { taskEvent, hideTaskForm } from './creatingTask';
+import { taskEvent, hideTaskForm, removeAllProject } from './creatingTask';
 
 import { selectTile, checkSelectedTile, homeEvent } from './home';
-import { deleteProject } from './control';
+import { deleteProject, deleteTask } from './control';
 import './style.css';
 
 projectEvent();
@@ -20,6 +20,8 @@ selectTile();
 checkSelectedTile();
 homeEvent();
 deleteProject();
+// removeAllTask();
+deleteTask();
 
 hideProjectForm();
 hideTaskForm();

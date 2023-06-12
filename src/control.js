@@ -3,8 +3,14 @@ import {
   populateProjects,
   saveToLocalStorage,
 } from './creatingProject';
-import { displayAllTasks, checkSelectedTile } from './home';
+import {
+  displayAllTasks,
+  checkSelectedTile,
+  displayProjectTasks,
+} from './home';
 
+//PROJECT
+//delete project
 const deleteProject = () => {
   //Event delegation to handle the delete event on the project list container
   const projectList = document.querySelector('.projectList');
@@ -16,7 +22,9 @@ const deleteProject = () => {
       //delete the project from defaultProjectList
       defaultProjectList.splice(targetData, 1);
       sortProjectData();
+      saveToLocalStorage();
       console.log(defaultProjectList);
+
       projectList.textContent = '';
       populateProjects();
 
@@ -35,4 +43,31 @@ function sortProjectData() {
   }
 }
 
-export { deleteProject };
+//TASK
+//delete task
+function deleteTask() {
+  const taskList = document.querySelector('.taskList');
+  //event delegation
+  taskList.addEventListener('click', (event) => {
+    if (event.target.classList.contains('clear')) {
+      const task = event.target.closest('.task');
+      const taskData = task.dataset.taskNum;
+      const projectData = task.dataset.projectNum;
+
+      defaultProjectList[projectData].taskList.splice(taskData, 1);
+      sortTaskData(projectData);
+      saveToLocalStorage();
+      console.log(defaultProjectList);
+      displayProjectTasks(projectData);
+    }
+  });
+}
+
+//after task is deleted, sort tasks data number
+function sortTaskData(projectData) {
+  for (let i = 0; i < defaultProjectList[projectData].taskList.length; i++) {
+    defaultProjectList[projectData].taskList[i].dataTask = i;
+  }
+}
+
+export { deleteProject, deleteTask };
