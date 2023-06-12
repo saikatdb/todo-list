@@ -70,4 +70,25 @@ function sortTaskData(projectData) {
   }
 }
 
-export { deleteProject, deleteTask };
+//check list for completed task
+function checkTask() {
+  const taskList = document.querySelector('.taskList');
+  taskList.addEventListener('click', (event) => {
+    const task = event.target.closest('.task');
+    const taskData = task.dataset.taskNum;
+    const projectData = task.dataset.projectNum;
+
+    if (event.target.classList.contains('unchecked')) {
+      defaultProjectList[projectData].taskList[taskData].completed = true;
+      displayProjectTasks(projectData);
+    }
+
+    if (event.target.classList.contains('checked')) {
+      defaultProjectList[projectData].taskList[taskData].completed = false;
+      displayProjectTasks(projectData);
+    }
+    saveToLocalStorage();
+  });
+}
+
+export { deleteProject, deleteTask, checkTask };

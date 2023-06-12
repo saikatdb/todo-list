@@ -128,7 +128,8 @@ function addTaskToDOM(
 
   if (completed) {
     leftTaskPanel.replaceChild(checked, unchecked);
-    taskContent.classList.add('lie-through', 'fade');
+    taskContent.classList.toggle('line-through');
+    taskContent.classList.toggle('fade');
   }
 
   const dueDate = document.createElement('p');
