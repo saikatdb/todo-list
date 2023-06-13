@@ -13,7 +13,6 @@ import './style.css';
 
 projectEvent();
 taskEvent();
-console.log(defaultProjectList);
 populateProjects();
 
 selectTile();

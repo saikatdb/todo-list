@@ -25,7 +25,6 @@ const deleteProject = () => {
       defaultProjectList.splice(targetData, 1);
       sortProjectData();
       saveToLocalStorage();
-      console.log(defaultProjectList);
 
       projectList.textContent = '';
       populateProjects();
@@ -59,7 +58,6 @@ function deleteTask() {
       defaultProjectList[projectData].taskList.splice(taskData, 1);
       sortTaskData(projectData);
       saveToLocalStorage();
-      console.log(defaultProjectList);
       displayProjectTasks(projectData);
     }
   });

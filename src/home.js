@@ -1,12 +1,4 @@
-import {
-  isEqual,
-  format,
-  parseISO,
-  parse,
-  isValid,
-  getWeek,
-  isThisWeek,
-} from 'date-fns';
+import { format, parse, isThisWeek } from 'date-fns';
 import { enGB } from 'date-fns/locale';
 import { defaultProjectList } from './creatingProject';
 import { addTaskToDOM } from './creatingTask';
@@ -211,7 +203,6 @@ function displayWeek() {
       const parsedDate = parse(task.date, 'P', new Date(), {
         locale: enGB,
       });
-      console.log(isThisWeek(parsedDate));
       if (isThisWeek(parsedDate)) {
         addTaskToDOM(
           task.dataProject,
