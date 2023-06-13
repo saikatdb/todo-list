@@ -132,7 +132,8 @@ function addTaskToDOM(
     taskContent.classList.toggle('fade');
   }
 
-  const dueDate = document.createElement('p');
+  //add date
+  const dueDate = document.createElement('div');
   dueDate.classList.add('due-date');
   dueDate.textContent = date;
   rightTaskPanel.appendChild(dueDate);
@@ -174,4 +175,10 @@ const removeAllProject = () => {
 
 // removeAllTask();
 
-export { hideTaskForm, taskEvent, addTaskToDOM, removeAllProject };
+export {
+  hideTaskForm,
+  taskEvent,
+  addTaskToDOM,
+  removeAllProject,
+  processDateInput,
+};

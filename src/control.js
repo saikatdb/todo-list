@@ -9,6 +9,8 @@ import {
   displayProjectTasks,
 } from './home';
 
+import { processDateInput } from './creatingTask';
+
 //PROJECT
 //delete project
 const deleteProject = () => {
@@ -102,10 +104,10 @@ function taskControlEvent() {
       displayProjectTasks(projectData);
     }
 
+    //to change date after task is created
     if (event.target.classList.contains('due-date')) {
       const datePick = document.createElement('input');
       datePick.setAttribute('type', 'date');
-      //   datePick.classList.add('new-due-date');
       datePick.setAttribute('id', 'new-due-date');
 
       const rightTaskPanel = event.target.closest('.right-task-panel');
@@ -113,8 +115,8 @@ function taskControlEvent() {
       rightTaskPanel.replaceChild(datePick, dueDate);
 
       datePick.addEventListener('input', () => {
-        defaultProjectList[projectData].taskList[taskData].date =
-          datePick.value;
+        const dateInput = processDateInput(datePick.value);
+        defaultProjectList[projectData].taskList[taskData].date = dateInput;
 
         saveToLocalStorage();
 
