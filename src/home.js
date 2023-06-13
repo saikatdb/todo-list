@@ -1,3 +1,5 @@
+import { isEqual, format, parseISO, parse, isValid } from 'date-fns';
+import { enGB } from 'date-fns/locale';
 import { defaultProjectList } from './creatingProject';
 import { addTaskToDOM } from './creatingTask';
 
@@ -40,6 +42,9 @@ function checkSelectedTile() {
       }
       if (selected.matches('#completed')) {
         displayCompleted();
+      }
+      if (selected.matches('#today')) {
+        displayToday();
       }
     }
   });
@@ -145,7 +150,7 @@ function displayImportant() {
   });
 }
 
-//display important task
+//display completed task
 function displayCompleted() {
   clearTaskFromDOM();
   defaultProjectList.forEach((project) => {
@@ -161,6 +166,26 @@ function displayCompleted() {
         );
       } else {
         return;
+      }
+    });
+  });
+}
+
+function displayToday() {
+  clearTaskFromDOM();
+  const today = format(new Date(), 'MM/dd/yyyy');
+  defaultProjectList.forEach((project) => {
+    project.taskList.forEach((task) => {
+      let date = task.date;
+      if (today == date) {
+        addTaskToDOM(
+          task.dataProject,
+          task.dataTask,
+          task.title,
+          task.date,
+          task.completed,
+          task.important
+        );
       }
     });
   });
