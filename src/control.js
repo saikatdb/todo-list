@@ -102,6 +102,26 @@ function taskControlEvent() {
       displayProjectTasks(projectData);
     }
 
+    if (event.target.classList.contains('due-date')) {
+      const datePick = document.createElement('input');
+      datePick.setAttribute('type', 'date');
+      //   datePick.classList.add('new-due-date');
+      datePick.setAttribute('id', 'new-due-date');
+
+      const rightTaskPanel = event.target.closest('.right-task-panel');
+      const dueDate = rightTaskPanel.querySelector('.due-date');
+      rightTaskPanel.replaceChild(datePick, dueDate);
+
+      datePick.addEventListener('input', () => {
+        defaultProjectList[projectData].taskList[taskData].date =
+          datePick.value;
+
+        saveToLocalStorage();
+
+        displayProjectTasks(projectData);
+      });
+    }
+
     saveToLocalStorage();
   });
 }
