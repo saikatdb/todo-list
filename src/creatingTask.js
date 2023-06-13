@@ -162,7 +162,7 @@ function processDateInput(dateInput) {
   if (!dateInput) {
     formattedDate = 'No Due Date';
   } else {
-    const dueDate = format(new Date(dateInput), 'MM/dd/yyyy');
+    const dueDate = format(new Date(dateInput), 'dd/MM/yyyy');
     formattedDate = dueDate;
   }
   return formattedDate;
