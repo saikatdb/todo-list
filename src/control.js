@@ -84,24 +84,28 @@ function taskControlEvent() {
     if (event.target.classList.contains('unchecked')) {
       defaultProjectList[projectData].taskList[taskData].completed = true;
       displayProjectTasks(projectData);
+      checkSelectedTile();
     }
 
     //to uncheck checked task
     if (event.target.classList.contains('checked')) {
       defaultProjectList[projectData].taskList[taskData].completed = false;
       displayProjectTasks(projectData);
+      checkSelectedTile();
     }
 
     //to make task important
     if (event.target.classList.contains('star-border')) {
       defaultProjectList[projectData].taskList[taskData].important = true;
       displayProjectTasks(projectData);
+      checkSelectedTile();
     }
 
     // to make task unimportant
     if (event.target.classList.contains('important')) {
       defaultProjectList[projectData].taskList[taskData].important = false;
       displayProjectTasks(projectData);
+      checkSelectedTile();
     }
 
     //to change date after task is created
