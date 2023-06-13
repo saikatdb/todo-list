@@ -1,4 +1,12 @@
-import { isEqual, format, parseISO, parse, isValid } from 'date-fns';
+import {
+  isEqual,
+  format,
+  parseISO,
+  parse,
+  isValid,
+  getWeek,
+  isThisWeek,
+} from 'date-fns';
 import { enGB } from 'date-fns/locale';
 import { defaultProjectList } from './creatingProject';
 import { addTaskToDOM } from './creatingTask';
@@ -45,6 +53,9 @@ function checkSelectedTile() {
       }
       if (selected.matches('#today')) {
         displayToday();
+      }
+      if (selected.matches('#thisWeek')) {
+        displayWeek();
       }
     }
   });
@@ -171,13 +182,37 @@ function displayCompleted() {
   });
 }
 
+//display today's task
 function displayToday() {
   clearTaskFromDOM();
-  const today = format(new Date(), 'MM/dd/yyyy');
+  const today = format(new Date(), 'dd/MM/yyyy');
   defaultProjectList.forEach((project) => {
     project.taskList.forEach((task) => {
-      let date = task.date;
+      const date = task.date;
       if (today == date) {
+        addTaskToDOM(
+          task.dataProject,
+          task.dataTask,
+          task.title,
+          task.date,
+          task.completed,
+          task.important
+        );
+      }
+    });
+  });
+}
+
+//display this weeks task
+function displayWeek() {
+  clearTaskFromDOM();
+  defaultProjectList.forEach((project) => {
+    project.taskList.forEach((task) => {
+      const parsedDate = parse(task.date, 'P', new Date(), {
+        locale: enGB,
+      });
+      console.log(isThisWeek(parsedDate));
+      if (isThisWeek(parsedDate)) {
         addTaskToDOM(
           task.dataProject,
           task.dataTask,
