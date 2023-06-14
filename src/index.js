@@ -1,14 +1,16 @@
 import {
   projectEvent,
-  defaultProjectList,
   hideProjectForm,
   populateProjects,
 } from './creatingProject';
-
-import { taskEvent, hideTaskForm, removeAllProject } from './creatingTask';
-
+import { taskEvent, hideTaskForm } from './creatingTask';
 import { selectTile, checkSelectedTile, homeEvent } from './home';
-import { deleteProject, deleteTask, taskControlEvent } from './control';
+import {
+  deleteProject,
+  deleteTask,
+  taskControlEvent,
+  formControl,
+} from './control';
 import './style.css';
 
 projectEvent();
@@ -19,9 +21,10 @@ selectTile();
 checkSelectedTile();
 homeEvent();
 deleteProject();
-// removeAllTask();
 deleteTask();
 taskControlEvent();
 
 hideProjectForm();
 hideTaskForm();
+
+formControl();

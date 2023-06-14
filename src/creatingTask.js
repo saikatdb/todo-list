@@ -3,6 +3,7 @@ import {
   defaultProjectList,
   createIconRound,
   saveToLocalStorage,
+  hideProjectForm,
 } from './creatingProject';
 
 //create the task
@@ -43,6 +44,7 @@ const showTaskForm = () => {
   taskForm.style.display = 'block';
   const taskInput = document.querySelector('#taskInput');
   taskInput.focus();
+  hideProjectForm();
 };
 
 const findCurrentDataProject = () => {
@@ -168,17 +170,4 @@ function processDateInput(dateInput) {
   return formattedDate;
 }
 
-const removeAllProject = () => {
-  localStorage.clear();
-  saveToLocalStorage();
-};
-
-// removeAllTask();
-
-export {
-  hideTaskForm,
-  taskEvent,
-  addTaskToDOM,
-  removeAllProject,
-  processDateInput,
-};
+export { hideTaskForm, taskEvent, addTaskToDOM, processDateInput };

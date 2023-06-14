@@ -1,4 +1,5 @@
 import { selectTile } from './home';
+import { hideTaskForm } from './creatingTask';
 
 //create project factory
 const projectFactory = (dataProject, projectName) => {
@@ -38,6 +39,7 @@ const showProjectForm = () => {
   document.querySelector('#projectForm').style.display = 'block';
   //focus on input field
   document.getElementById('projectInput').focus();
+  hideTaskForm();
 };
 
 //process data from add project

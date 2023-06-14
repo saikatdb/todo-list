@@ -2,14 +2,10 @@ import {
   defaultProjectList,
   populateProjects,
   saveToLocalStorage,
+  hideProjectForm,
 } from './creatingProject';
-import {
-  displayAllTasks,
-  checkSelectedTile,
-  displayProjectTasks,
-} from './home';
-
-import { processDateInput } from './creatingTask';
+import { checkSelectedTile, displayProjectTasks } from './home';
+import { processDateInput, hideTaskForm } from './creatingTask';
 
 //PROJECT
 //delete project
@@ -130,4 +126,15 @@ function taskControlEvent() {
   });
 }
 
-export { deleteProject, deleteTask, taskControlEvent };
+//to hide form if another project was clicked
+function formControl() {
+  const tiles = document.querySelectorAll('.tile');
+  tiles.forEach((tile) => {
+    tile.addEventListener('click', () => {
+      hideProjectForm();
+      hideTaskForm();
+    });
+  });
+}
+
+export { deleteProject, deleteTask, taskControlEvent, formControl };

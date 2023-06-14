@@ -1,6 +1,6 @@
 import { format, parse, isThisWeek } from 'date-fns';
 import { enGB } from 'date-fns/locale';
-import { defaultProjectList } from './creatingProject';
+import { defaultProjectList, hideProjectForm } from './creatingProject';
 import { addTaskToDOM } from './creatingTask';
 
 const homeEvent = () => {
@@ -9,7 +9,7 @@ const homeEvent = () => {
 };
 
 //add 'selected' class to the clicked project
-const selectTile = () => {
+function selectTile() {
   const tiles = document.querySelectorAll('.tile');
   tiles.forEach((tile) => {
     tile.addEventListener('click', () => {
@@ -18,7 +18,7 @@ const selectTile = () => {
       tile.classList.add('selected');
     });
   });
-};
+}
 
 //check which project tile is selected
 function checkSelectedTile() {
