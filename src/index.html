@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet"
+    />
+    <!-- <script src="index.js" defer></script> -->
+    <title>Todo List</title>
+  </head>
+  <body>
+    <script defer src="main.js"></script>
+    <header>
+      <div>ToDo List</div>
+    </header>
+    <div class="content">
+      <div class="leftPanel">
+        <!-- home panel -->
+        <div class="default-project-list">
+          <h2>Home</h2>
+          <button class="tile default-project selected" id="allTasks">
+            <span class="material-icons-round"> inbox </span>
+            <div class="project-name">All Tasks</div>
+          </button>
+          <button class="tile default-project" id="today">
+            <span class="material-icons-round"> today </span>
+            <div class="project-name">Today</div>
+          </button>
+          <button class="tile default-project" id="thisWeek">
+            <span class="material-icons-round"> date_range </span>
+            <div class="project-name">This Week</div>
+          </button>
+          <button class="tile default-project" id="important">
+            <span class="material-icons-round"> star </span>
+            <div class="project-name">Important</div>
+          </button>
+          <button class="tile default-project" id="completed">
+            <span class="material-icons-round"> done_all </span>
+            <div class="project-name">Completed</div>
+          </button>
+        </div>
+        <!-- User Projects -->
+        <div class="project">
+          <h1 class="projectTitle">Project</h1>
+          <div class="projectList"></div>
+          <form id="projectForm" class="hidden" autocomplete="off">
+            <div class="inputField">
+              <input
+                type="text"
+                id="projectInput"
+                placeholder="Enter Project Name"
+                maxlength="24"
+              />
+              <div class="formButtons">
+                <input type="submit" class="projectSubmitBtn" value="Add" />
+                <input type="button" class="projectCancelBtn" value="Cancel" />
+              </div>
+            </div>
+          </form>
+          <button id="addProject">Add Project</button>
+        </div>
+      </div>
+      <div class="rightPanel">
+        <h1 class="current-project">All Tasks</h1>
+        <div class="task-todo">
+          <div class="taskList"></div>
+          <form id="taskForm" class="hidden" autocomplete="off">
+            <div class="inputField">
+              <input type="text" id="taskInput" placeholder="New Task" />
+              <input type="date" id="taskDate" />
+              <div class="formButtons">
+                <input type="submit" class="taskSubmitBtn" value="Add" />
+                <input type="button" class="taskCancelBtn" value="Cancel" />
+              </div>
+            </div>
+          </form>
+          <button id="addTask">Add Task</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
