@@ -80,7 +80,8 @@ function showAddTask() {
 function updateDefaultTitle() {
   const currentProject = document.querySelector('.current-project');
   const selectedProject = document.querySelector('.selected');
-  currentProject.textContent = selectedProject.textContent;
+  const projectName = selectedProject.querySelector('.project-name');
+  currentProject.textContent = projectName.textContent;
 }
 
 //change title if any custom project is selected
