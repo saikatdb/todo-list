@@ -86,7 +86,7 @@ const addProjectToDOM = (dataProject, textInput) => {
   leftProjectPanel.appendChild(listIcon);
 
   //add project title
-  const textSpan = document.createElement('span');
+  const textSpan = document.createElement('div');
   textSpan.classList.add('project-name');
   textSpan.textContent = textInput;
   leftProjectPanel.appendChild(textSpan);
