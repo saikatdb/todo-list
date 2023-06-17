@@ -73,7 +73,7 @@ function hideAddTask() {
 //show add task button
 function showAddTask() {
   const addTask = document.querySelector('#addTask');
-  addTask.style.display = 'block';
+  addTask.style.display = 'flex';
 }
 
 //change title if any default project is selected

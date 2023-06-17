@@ -41,7 +41,7 @@ const hideTaskForm = () => {
 
 const showTaskForm = () => {
   const taskForm = document.querySelector('#taskForm');
-  taskForm.style.display = 'block';
+  taskForm.style.display = 'flex';
   const taskInput = document.querySelector('#taskInput');
   taskInput.focus();
   hideProjectForm();
