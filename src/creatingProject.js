@@ -36,6 +36,7 @@ const hideProjectForm = () => {
 };
 
 const showProjectForm = () => {
+  //flex so that can control better in css
   document.querySelector('#projectForm').style.display = 'flex';
   //focus on input field
   document.getElementById('projectInput').focus();

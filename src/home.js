@@ -73,6 +73,7 @@ function hideAddTask() {
 //show add task button
 function showAddTask() {
   const addTask = document.querySelector('#addTask');
+  //flex so that can control better in css
   addTask.style.display = 'flex';
 }
 
