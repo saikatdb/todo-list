@@ -47,6 +47,9 @@ const showProjectForm = () => {
 const addProjectInput = (e) => {
   e.preventDefault();
   const projectName = document.getElementById('projectInput').value;
+
+  if (projectName.length == 0) return;
+
   const dataProject = defaultProjectList.length;
 
   const newProject = projectFactory(dataProject, projectName);

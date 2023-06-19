@@ -61,6 +61,9 @@ const selectCurrentProject = (currentDataProject) => {
 const taskInput = (e) => {
   e.preventDefault();
   let title = document.getElementById('taskInput').value;
+
+  if (title.length == 0) return;
+
   let dateInput = document.getElementById('taskDate').value;
 
   let currentDataProject = findCurrentDataProject();
