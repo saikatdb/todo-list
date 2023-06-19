@@ -17,32 +17,34 @@
     <div class="content">
       <div class="leftPanel">
         <!-- home panel -->
-        <div class="default-project-list">
+        <div class="default-projects">
           <h2>Home</h2>
-          <button class="tile default-project selected" id="allTasks">
-            <span class="material-icons-round"> inbox </span>
-            <div class="project-name">All Tasks</div>
-          </button>
-          <button class="tile default-project" id="today">
-            <span class="material-icons-round"> today </span>
-            <div class="project-name">Today</div>
-          </button>
-          <button class="tile default-project" id="thisWeek">
-            <span class="material-icons-round"> date_range </span>
-            <div class="project-name">This Week</div>
-          </button>
-          <button class="tile default-project" id="important">
-            <span class="material-icons-round"> star </span>
-            <div class="project-name">Important</div>
-          </button>
-          <button class="tile default-project" id="completed">
-            <span class="material-icons-round"> done_all </span>
-            <div class="project-name">Completed</div>
-          </button>
+          <div class="default-project-list">
+            <button class="tile default-project selected" id="allTasks">
+              <span class="material-icons-round"> inbox </span>
+              <div class="project-name">All Tasks</div>
+            </button>
+            <button class="tile default-project" id="today">
+              <span class="material-icons-round"> today </span>
+              <div class="project-name">Today</div>
+            </button>
+            <button class="tile default-project" id="thisWeek">
+              <span class="material-icons-round"> date_range </span>
+              <div class="project-name">This Week</div>
+            </button>
+            <button class="tile default-project" id="important">
+              <span class="material-icons-round"> star </span>
+              <div class="project-name">Important</div>
+            </button>
+            <button class="tile default-project" id="completed">
+              <span class="material-icons-round"> done_all </span>
+              <div class="project-name">Completed</div>
+            </button>
+          </div>
         </div>
         <!-- User Projects -->
         <div class="project">
-          <h1 class="projectTitle">Project</h1>
+          <h1 class="projectTitle">Projects</h1>
           <div class="projectList"></div>
           <form id="projectForm" class="hidden" autocomplete="off">
             <div class="inputField">
@@ -58,7 +60,10 @@
               </div>
             </div>
           </form>
-          <button id="addProject">Add Project</button>
+          <button id="addProject">
+            <span class="material-icons-round"> add </span>
+            Add Project
+          </button>
         </div>
       </div>
       <div class="rightPanel">
@@ -67,15 +72,20 @@
           <div class="taskList"></div>
           <form id="taskForm" class="hidden" autocomplete="off">
             <div class="inputField">
-              <input type="text" id="taskInput" placeholder="New Task" />
-              <input type="date" id="taskDate" />
+              <div class="inputContent">
+                <input type="text" id="taskInput" placeholder="New Task" />
+                <input type="date" id="taskDate" />
+              </div>
               <div class="formButtons">
                 <input type="submit" class="taskSubmitBtn" value="Add" />
                 <input type="button" class="taskCancelBtn" value="Cancel" />
               </div>
             </div>
           </form>
-          <button id="addTask">Add Task</button>
+          <button id="addTask">
+            <span class="material-icons-round"> add </span>
+            Add Task
+          </button>
         </div>
       </div>
     </div>
