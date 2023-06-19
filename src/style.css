@@ -43,7 +43,7 @@ body {
 
 .content {
   display: grid;
-  grid-template-columns: minmax(250px, 1fr) minmax(400px, 3fr);
+  grid-template-columns: minmax(250px, 1fr) minmax(600px, 3fr);
 }
 
 .default-project-list,
@@ -203,6 +203,42 @@ input {
   padding: 10px;
 }
 
+#taskDate,
+#taskInput,
+#projectInput {
+  border-radius: 4px;
+  border: 1px solid black;
+}
+
 #taskDate {
   color: #525252;
+}
+
+.material-icons-round,
+.due-date {
+  cursor: pointer;
+}
+
+.task:hover {
+  background-color: #d4d4d4;
+  border-radius: 4px;
+}
+
+#new-due-date {
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid black;
+  background-color: var(--right-panel-color);
+}
+
+@media (max-width: 800px) {
+  .content {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .leftPanel,
+  .rightPanel {
+    height: max-content;
+  }
 }
