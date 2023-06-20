@@ -33,17 +33,16 @@ body {
 
 .leftPanel {
   background-color: var(--left-panel-color);
-  height: calc(100vh - 100px);
 }
 
 .rightPanel {
   background-color: var(--right-panel-color);
-  height: calc(100vh - 100px);
 }
 
 .content {
   display: grid;
   grid-template-columns: minmax(250px, 1fr) minmax(600px, 3fr);
+  grid-template-rows: minmax(calc(100vh - 100px), 1fr);
 }
 
 .default-project-list,
