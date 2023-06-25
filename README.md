@@ -8,7 +8,7 @@
 - Package date-fns is used
 - Live Preview: [here](https://saikatdb.github.io/todo-list/)
 
-##Features
+## Features
 - All tasks can be seen as when opening the app
 - New projects can be made
 - New tasks can be created only when the created project was selected
